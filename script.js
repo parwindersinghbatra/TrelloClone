@@ -8,26 +8,26 @@ let listIndex = 0;
 function hiddenInput(){
   addBoard.style.display= 'none';
   // const board = document.getElementById("board");
-  const inputDiv = document.createElement("p");
-  const btnDiv = document.createElement("p");
+  const inputDiv = document.createElement("div");
+  
   
   inputDiv.className="divs"
-  btnDiv.className="divs"
   const InputType = document.createElement("input");
+  const spanX = document.createElement("span");
   InputType.type= "text" 
   InputType.className="Inputtype"
   var newButton = document.createElement('button');
   newButton.className="newbutton"
 
-  inputDiv.appendChild(InputType)
+  inputDiv.append(InputType)
 newButton.textContent = 'Add Board';
 
+spanX.innerHTML = 'X'
+spanX.className="spanx"
+inputDiv.append(newButton);
+inputDiv.append(spanX);
 
-btnDiv.appendChild(newButton);
-
-
-app.appendChild(inputDiv);
-app.appendChild(btnDiv);
+app.append(inputDiv);
 
 newButton.addEventListener('click', () => {
   if(InputType.value == ""){
@@ -36,34 +36,37 @@ newButton.addEventListener('click', () => {
     InputType.focus();
   } else{
     addData(InputType)
-    InputType.style.display="none";
-    newButton.style.display="none"; 
+    inputDiv.remove();
   }
 });
+
+spanX.addEventListener('click', () => {
+  inputDiv.remove();
+  addBoard.style.display= 'block';
+})
+
 } 
 function addData(InputTypeValue, addBoardValue) {
   addBoard.style.display= 'block';
   const board = document.getElementById("board");
   const list = document.createElement("div");
+  const deletefun = document.createElement("span")
+
   list.className = "list";
   list.id = "list-" + listIndex;
 
   list.innerHTML = `
-  <h3>${InputTypeValue.value}</h3>
-
-    <div id="cards-${listIndex}" draggable="true" class='cardMovable'> </div>
-    <div class="add-card-button" onclick="addCard(${listIndex})">+ Add Card</div>
+  
+  <h3 class='headingvalue'>${InputTypeValue.value} </h3>
+      <div id="cards-${listIndex}" draggable="true" class='cardMovable'> </div>
+    <div class="add-card-button" onclick="addCard(${listIndex})">Add Card</div>
+    
   `;
   board.appendChild(list);
   listIndex++;
 }
-
 function addCard(index) {
   const cardsContainer = document.getElementById(`cards-${index}`);
-
-  // const cardType = document.createElement("input");
-  // cardType.type= "text"
-  // cardsContainer.appendChild(cardType)
 
   const cardName = prompt("Enter card name:");
 
@@ -72,9 +75,11 @@ function addCard(index) {
     card.className = "card";
     card.draggable = true;
     card.textContent = cardName;
+
     card.onclick = function() {
       showCardDetails(cardName);
     };
+
     cardsContainer.appendChild(card);
   }
 }

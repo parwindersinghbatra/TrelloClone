@@ -2,9 +2,8 @@ body {
   font-family: sans-serif;
   color: #172b4d;
   background-image: url(Images/ProfessionalImage.jpg);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
-  display: flex;
   align-items: start;
 }
 #app{
@@ -22,49 +21,56 @@ body {
   background: rgba(0,0,0,.12);
   color: hsla(0,0%,100%,.8);
 }
-.divs {
-  
-  
+.board {
+  display: flex;
   width: auto;
-
+  height:fit-content
 }
-  .board {
-    display: flex;
-    width: auto;
-    height:fit-content
-  }
+.divs {
+  margin-top:8px;
+  width:350px;
+  padding:4px;
+  margin-top:4px;
+}
+   
 .Inputtype{
-  display: inline-block;
-  position: relative;
   border-radius: 5px;
+  padding:4px;
   background: rgb(249, 250, 250);
   border: 1px solid rgb(181, 189, 196);
-  font-size: 16px;
-  line-height: 24px;
-  padding: 7px 8px;
   color: rgb(8, 9, 10);
   box-shadow: none;
 }
-:focus{
-  background-color: #fff;
-  border-color: #3b49df;
-  box-shadow: 1px 1px 0 #3b49df;
+.deletefun{
+  display:inline;
+  border:1px solid black;
 }
-.newbutton{
-  display:justify;
+.headingvalue{
+  display:inline-block;
+}
+.newbutton {
+  background-color: #2f80ed;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 .dragging{
     opacity: 0.5;
 }
   .list {
-    width: 300px;
+    width: 230px;
     margin: 8px;
     background-color: #ebecf0;
     border-radius: 4px;
     padding: 8px;
   }
-  
-  .card {
+    .card {
     background-color: #fff;
     padding: 8px;
     margin: 8px 0;
@@ -77,9 +83,20 @@ body {
   }
   
   .add-card-button {
-    margin-top: 8px;
+
+    background-color: #2f80ed;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
     cursor: pointer;
-    color: #0079bf;
+    /* margin-top: 8px;
+    cursor: pointer;
+    color: #0079bf; */
   }
 
   .trelloBoard
@@ -91,29 +108,7 @@ body {
     font-style: normal;
     display: block !important;
   }
-  /* .title {
-    font-weight: 600;
-    margin: 7px;
-    padding: 10px;
-  }
-  .editable {
-  user-select: none;
-  outline: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-.content {
-  border-bottom: 1px solid #cecece;
-}
-  <div class="list">
-    <div class="title removable editable">Empty list</div>
-    <div class="content"></div>
-    <div class="add-card editable">Add another card</div>
-  </div>
-   */
-
-
+  
 /* CSS */
 .AddboardClass {
   appearance: none;
@@ -174,5 +169,23 @@ body {
   .AddboardClass {
     padding: 14px 22px;
     width: 176px;
+  }
+}
+
+.spanx{
+  justify-content: right;
+  margin-left: 50px;
+  margin-top:15px;
+  position: absolute; 
+}
+
+.spanx:hover{
+  color:red;
+  animation: rotate 1s linear;
+}
+
+@keyframes rotate{
+  50%{
+      transform: rotate(180deg);
   }
 }
