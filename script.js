@@ -54,33 +54,70 @@ function addData(InputTypeValue, addBoardValue) {
 
   list.className = "list";
   list.id = "list-" + listIndex;
-
+  
   list.innerHTML = `
   
   <h3 class='headingvalue'>${InputTypeValue.value} </h3>
       <div id="cards-${listIndex}" draggable="true" class='cardMovable'> </div>
-    <div class="add-card-button" onclick="addCard(${listIndex})">Add Card</div>
+    <div class="add-card-button" onclick="addCard(${listIndex},'list')">Add Card</div>
     
   `;
   board.appendChild(list);
   listIndex++;
 }
+
+// function adddetails(index,listname)
+// {
+//   const listnames = listname
+//   const addDetailsDiv = document.createElement('div')
+//   const addDetailsInput = document.createElement('input')
+//   addDetailsInput.type="text"
+//   const addDetailsButton = document.createElement('button')
+//   addDetailsButton.textContent = "Add Card"
+//   const addDetailsspan = document.createElement('span')
+//   addDetailsspan.innerHTML = "X"
+
+//   addDetailsDiv.appendChild(addDetailsInput)
+//   addDetailsDiv.appendChild(addDetailsButton)
+//   addDetailsDiv.appendChild(addDetailsspan)
+//     listnames.appendChild(addDetailsDiv)
+// console.log(listnames)
+// //  addCard(index)
+// }
+
+
 function addCard(index) {
   const cardsContainer = document.getElementById(`cards-${index}`);
+  // const cardName = document.createElement("input");
+  // cardName.type = "text";
 
+  // cardsContainer.appendChild(cardName);
   const cardName = prompt("Enter card name:");
 
   if (cardName) {
     const card = document.createElement("div");
-    card.className = "card";
-    card.draggable = true;
-    card.textContent = cardName;
+    const carddelete = document.createElement("div")
 
+    card.className = "card";
+    carddelete.className="cardx"
+    carddelete.innerHTML = "X"
+    card.draggable = true;
+
+    card.append(cardName)
+    cardsContainer.append(carddelete);
+
+    carddelete.addEventListener("click", () =>{
+      carddelete.remove()
+      card.remove()
+
+    })
     card.onclick = function() {
       showCardDetails(cardName);
     };
 
     cardsContainer.appendChild(card);
+
+    
   }
 }
 
